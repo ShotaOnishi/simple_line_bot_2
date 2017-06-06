@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-    has_many :messages, depedent: destroy
+    #has_many :messages, depedent: destroy
 end
