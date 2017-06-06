@@ -17,12 +17,11 @@ class WebhookController < ApplicationController
 
     case event_type
     when "message"
-      user = User.create(line_id: event["source"]["userId"])
+      user = User.new(line_id: event["source"]["userId"])
+      user = User.where(line_id: event["source"][userId]) unless user.save
       input_text = event["message"]["text"]
       chat = Message.create(chat_text: input_text, user_id: user.id)
       output_text = chat.chat_text
-      #output_text = event["source"]["userId"]
-      #output_text = input_text
     end
 
     client = LineClient.new(CHANNEL_ACCESS_TOKEN, OUTBOUND_PROXY)
