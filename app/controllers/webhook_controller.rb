@@ -20,8 +20,8 @@ class WebhookController < ApplicationController
       #user = User.create(user_id: event["source"]["userId"])
       input_text = event["message"]["text"]
       #chat = Message.create(chat_text: input_text, user_id: user.id)
-      #output_text = "保存メッセージを保存しました。ありがとう"
-      output_text = event["source"]["type"]
+      output_text = "保存メッセージを保存しました。ありがとう"
+      #output_text = event["source"]["type"]
     end
 
     client = LineClient.new(CHANNEL_ACCESS_TOKEN, OUTBOUND_PROXY)
