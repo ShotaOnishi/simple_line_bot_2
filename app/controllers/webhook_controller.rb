@@ -18,7 +18,7 @@ class WebhookController < ApplicationController
     case event_type
     when "message"
       user = User.new(line_id: event["source"]["userId"])
-      user = User.where(line_id: event["source"][userId]) unless user.save
+      user = User.where(line_id: event["source"]["userId"]) unless user.save
       input_text = event["message"]["text"]
       chat = Message.create(chat_text: input_text, user_id: user.id)
       output_text = chat.chat_text
