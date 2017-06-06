@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(version: 20170606075907) do
 
   create_table "messages", force: :cascade do |t|
-    t.text     "chat_text"
-    t.text     "user_id"
+    t.string   "chat_text"
+    t.string   "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.text     "line_id"
+    t.string   "line_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
