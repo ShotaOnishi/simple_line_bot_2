@@ -17,15 +17,8 @@ class WebhookController < ApplicationController
 
     case event_type
     when "message"
-      user = User.new(line_id: event["source"]["userId"])
-      if user.save
-        
-      else
-        user = User.where(line_id: event["source"]["userId"])
-      end
-      chat = Message.create(chat_text: input_text, user_id: user.id)
-      input_text = event["message"]["text"]
-      chat = Message.create(chat_text: input_text, user_id: user.id)
+      user = User.find_or_create_by(:line_id => event["source"]["userId"])
+      chat = Message.create(:chat_text => event["message"]["text"], :user_id => user.id)
       output_text = chat.chat_text
       #output_text = event["source"]["userId"]
       #output_text = input_text
