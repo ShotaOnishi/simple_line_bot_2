@@ -19,7 +19,7 @@ class WebhookController < ApplicationController
     when "message"
       user = User.find_or_create_by(:line_id => event["source"]["userId"])
       chat = Message.create(:chat_text => event["message"]["text"], :user_id => user.id)
-      output_text = chat.chat_text
+      output_text = chat.chat_text + "hello"
       #output_text = event["source"]["userId"]
       #output_text = input_text
     end
